@@ -29,9 +29,9 @@ function fallbackSources(topic) {
     ];
   }
   return [
-    { title: 'React', url: 'https://react.dev/', content: 'React 官方文档与生态更新。' },
-    { title: 'Vite', url: 'https://vite.dev/', content: 'Vite 构建工具与开发体验。' },
-    { title: 'Frontend Masters Blog', url: 'https://frontendmasters.com/blog/', content: '前端技术文章与趋势观察。' },
+    { title: 'React 官方动态', url: 'https://react.dev/', content: 'React 官方文档与生态更新。' },
+    { title: 'Vite 官方动态', url: 'https://vite.dev/', content: 'Vite 构建工具与开发体验。' },
+    { title: '前端工程化观察', url: 'https://frontendmasters.com/blog/', content: '前端技术文章与趋势观察。' },
   ];
 }
 
@@ -49,9 +49,11 @@ async function tavilySearch(query) {
     body: JSON.stringify({
       query,
       search_depth: 'advanced',
-      include_answer: true,
+      include_answer: false,
       include_raw_content: false,
       max_results: 6,
+      country: 'china',
+      topic: 'news',
     }),
   });
 
@@ -67,84 +69,165 @@ function cleanText(text = '') {
   return String(text).replace(/\s+/g, ' ').trim();
 }
 
-function firstSentence(text, maxLen = 110) {
+function truncate(text, maxLen = 120) {
   const cleaned = cleanText(text);
-  if (!cleaned) return '';
-  const sentence = cleaned.split(/[。.!?！？]/)[0] || cleaned;
-  return sentence.length > maxLen ? `${sentence.slice(0, maxLen)}...` : sentence;
+  return cleaned.length > maxLen ? `${cleaned.slice(0, maxLen)}...` : cleaned;
 }
 
-function makeHighlights(answer, results, topic) {
-  const base = [];
-  const chunks = cleanText(answer)
-    .split(/(?<=[。.!?！？])\s+/)
-    .map((item) => item.trim())
-    .filter(Boolean);
+function containsChinese(text = '') {
+  return /[\u4e00-\u9fff]/.test(text);
+}
 
-  for (const chunk of chunks) {
-    if (base.length >= 3) break;
-    const short = chunk.length > 90 ? `${chunk.slice(0, 90)}...` : chunk;
-    base.push(short);
+function stripEnglishBoilerplate(text = '') {
+  return cleanText(text)
+    .replace(/Notice:.*$/i, '')
+    .replace(/The content above.*$/i, '')
+    .replace(/Recent posts?:.*$/i, '')
+    .replace(/Conclusion\s+/gi, '')
+    .trim();
+}
+
+function firstChineseSentence(text, maxLen = 110) {
+  const cleaned = stripEnglishBoilerplate(text);
+  if (!containsChinese(cleaned)) return '';
+  const sentence = cleaned.split(/[。！？!?]/).find((item) => containsChinese(item)) || cleaned;
+  return truncate(sentence, maxLen);
+}
+
+function keywordTags(text = '', topic = 'frontend') {
+  const lower = text.toLowerCase();
+  const tags = [];
+  const pairs = topic === 'finance'
+    ? [
+        ['etf', 'ETF'],
+        ['a股', 'A股'],
+        ['港股', '港股'],
+        ['美股', '美股'],
+        ['gold', '黄金'],
+        ['黄金', '黄金'],
+        ['bond', '债券'],
+        ['债券', '债券'],
+        ['fund', '基金'],
+        ['基金', '基金'],
+        ['semiconductor', '半导体'],
+        ['半导体', '半导体'],
+        ['科技', '科技'],
+        ['macro', '宏观'],
+        ['market', '市场'],
+      ]
+    : [
+        ['react', 'React'],
+        ['next', 'Next.js'],
+        ['vite', 'Vite'],
+        ['typescript', 'TypeScript'],
+        ['javascript', 'JavaScript'],
+        ['vue', 'Vue'],
+        [' ai ', 'AI 编程'],
+        ['ai coding', 'AI 编程'],
+        ['security', '安全更新'],
+        ['vulnerability', '安全更新'],
+        ['performance', '性能优化'],
+        ['compiler', '编译器'],
+      ];
+  for (const [needle, label] of pairs) {
+    if (text.includes(needle) || lower.includes(needle.toLowerCase())) tags.push(label);
+  }
+  return [...new Set(tags)];
+}
+
+function itemToChinesePoint(item, topic, index = 0) {
+  const title = cleanText(item.title || '');
+  const content = cleanText(item.content || item.snippet || '');
+  const chinese = firstChineseSentence(content || title, 96);
+  if (chinese) return chinese;
+
+  const tags = keywordTags(`${title} ${content}`, topic);
+  if (topic === 'finance') {
+    const fallbackFocus = ['A股与主要指数', 'ETF 与基金资金流', '黄金、债券和宏观风险偏好'];
+    const focus = tags.length ? tags.slice(0, 3).join('、') : fallbackFocus[index % fallbackFocus.length];
+    return `市场信息显示，${focus}仍是今日资金和情绪观察重点，需结合成交量与政策预期判断持续性。`;
   }
 
-  for (const item of results) {
+  const focus = tags.length ? tags.slice(0, 3).join('、') : ['React 生态', '构建工具', 'AI 编程'][index % 3];
+  return `前端生态今日重点关注${focus}相关变化，建议结合项目依赖、升级成本和团队工程规范评估落地。`;
+}
+
+function makeHighlights(results, topic) {
+  const base = [];
+
+  for (const [index, item] of results.entries()) {
     if (base.length >= 3) break;
-    const point = firstSentence(item.content || item.title, 90);
+    const point = itemToChinesePoint(item, topic, index);
     if (point && !base.includes(point)) base.push(point);
   }
 
-  while (base.length < 3) {
-    if (topic === 'finance') {
-      base.push(['关注 A股、港股、美股的风格切换和科技权重波动。', 'ETF、基金、债券和黄金仍是观察资金偏好的重要入口。', '宏观数据、利率预期和海外风险偏好会影响当日市场节奏。'][base.length]);
-    } else {
-      base.push(['关注 React、Vite、Next.js、TypeScript 等主流前端生态更新。', 'AI 编程工具继续影响组件生成、测试生成和代码审查流程。', '工程化重点仍是构建性能、可维护性、部署体验和运行时成本。'][base.length]);
-    }
-  }
+  const fallback = topic === 'finance'
+    ? ['关注 A股、港股、美股之间的风格切换和科技权重波动。', 'ETF、基金、债券和黄金仍是观察资金偏好的重要入口。', '宏观数据、利率预期和海外风险偏好会影响当日市场节奏。']
+    : ['关注 React、Vite、Next.js、TypeScript 等主流前端生态更新。', 'AI 编程工具继续影响组件生成、测试生成和代码审查流程。', '工程化重点仍是构建性能、可维护性、部署体验和运行时成本。'];
 
-  return base;
+  while (base.length < 3) base.push(fallback[base.length]);
+  return base.map((item) => truncate(item, 120));
 }
 
 function makeSections(results, topic) {
-  const picked = results.slice(0, 3);
-  const sections = picked.map((item) => ({
-    title: cleanText(item.title || '今日观察'),
-    content: cleanText(item.content || item.snippet || item.title || '暂无摘要。'),
-  }));
+  const points = makeHighlights(results, topic);
 
-  while (sections.length < 3) {
-    if (topic === 'finance') {
-      sections.push([
-        { title: 'A股观察', content: '重点关注科技成长、ETF 资金流向、政策预期和成交活跃度。' },
-        { title: '港美股观察', content: '重点关注大型科技股、AI 链条、互联网平台和利率预期变化。' },
-        { title: '风险提示', content: '日报仅作信息整理，不构成投资建议；高弹性板块波动通常更大。' },
-      ][sections.length]);
-    } else {
-      sections.push([
-        { title: '框架生态', content: '关注 React、Vue、Next.js、Vite 等主流框架和工具链的实际工程变化。' },
-        { title: 'AI 工具', content: '关注 AI 代码助手在组件生成、测试生成、重构和代码审查上的落地效果。' },
-        { title: '工程效率', content: '关注构建速度、缓存策略、部署流程、类型安全和团队协作成本。' },
-      ][sections.length]);
-    }
+  if (topic === 'finance') {
+    return [
+      {
+        title: '市场主线',
+        content: `${points[0]} 今日观察重点放在指数强弱、成交活跃度、行业轮动和 ETF 资金方向，避免只看单日涨跌。`,
+      },
+      {
+        title: '资金与板块',
+        content: `${points[1]} 若科技成长、红利资产、债券或黄金出现明显分化，说明市场风险偏好正在变化。`,
+      },
+      {
+        title: '风险提示',
+        content: '本日报仅作公开信息整理，不构成投资建议。高弹性板块波动通常更大，追涨前应关注成交量、估值和消息兑现风险。',
+      },
+    ];
   }
 
-  return sections;
+  return [
+    {
+      title: '生态动态',
+      content: `${points[0]} 对团队来说，优先关注是否影响现有技术栈、依赖升级路径和长期维护成本。`,
+    },
+    {
+      title: '工程效率',
+      content: `${points[1]} 可以重点评估构建速度、类型安全、测试生成、代码审查和部署链路是否有实际收益。`,
+    },
+    {
+      title: '落地建议',
+      content: '新技术先小范围验证，再进入主项目；涉及框架大版本、安全补丁或构建链路变化时，应同步补充回滚方案和兼容性检查。',
+    },
+  ];
 }
 
 function sourceLinks(results, topic) {
   const links = results
     .filter((item) => item.url)
     .slice(0, 5)
-    .map((item) => ({ label: cleanText(item.title || item.url), url: item.url }));
+    .map((item) => ({ label: truncate(cleanText(item.title || item.url), 80), url: item.url }));
 
   if (links.length) return links;
   return fallbackSources(topic).map((item) => ({ label: item.title, url: item.url }));
 }
 
+function makeSummary(results, topic) {
+  const highlights = makeHighlights(results, topic);
+  if (topic === 'finance') {
+    return `今日金融日报聚焦 A股、港股、美股、ETF、基金、债券、黄金与宏观风险偏好变化。核心看点：${highlights.slice(0, 2).join('；')}`;
+  }
+  return `今日前端技术日报聚焦 React、Vite、Next.js、TypeScript、JavaScript 与 AI 编程工具链。核心看点：${highlights.slice(0, 2).join('；')}`;
+}
+
 async function createReport(topic, date) {
   const isFinance = topic === 'finance';
   const query = isFinance
-    ? `${date} 最新 金融新闻 A股 港股 美股 ETF 基金 债券 黄金 市场早报`
-    : `${date} latest frontend news React Vite Next.js TypeScript JavaScript AI coding web development`;
+    ? `${date} A股 港股 美股 ETF 基金 债券 黄金 金融市场 今日新闻 中文`
+    : `${date} 前端 技术 新闻 React Vite Next.js TypeScript JavaScript AI 编程 中文`;
 
   let data;
   try {
@@ -155,8 +238,7 @@ async function createReport(topic, date) {
   }
 
   const results = Array.isArray(data.results) && data.results.length ? data.results : fallbackSources(topic);
-  const answer = cleanText(data.answer || '');
-  const highlights = makeHighlights(answer, results, topic);
+  const highlights = makeHighlights(results, topic);
   const sections = makeSections(results, topic);
 
   if (isFinance) {
@@ -165,7 +247,7 @@ async function createReport(topic, date) {
       title: `金融日报：${date} 市场早报`,
       date,
       category: 'finance',
-      summary: answer || '今日金融日报聚焦 A股、港股、美股、ETF、基金、债券、黄金与宏观风险偏好变化。',
+      summary: makeSummary(results, topic),
       tags: ['A股', '港股', '美股', 'ETF', '基金', '宏观'],
       highlights,
       sections,
@@ -178,7 +260,7 @@ async function createReport(topic, date) {
     title: `前端技术日报：${date} 技术早报`,
     date,
     category: 'frontend',
-    summary: answer || '今日前端技术日报聚焦 React、Vite、Next.js、TypeScript、JavaScript 与 AI 编程工具链。',
+    summary: makeSummary(results, topic),
     tags: ['React', 'Vite', 'Next.js', 'TypeScript', 'AI 编程', '工程化'],
     highlights,
     sections,
