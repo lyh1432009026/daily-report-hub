@@ -1,37 +1,56 @@
 {
   "id": "2026-05-12-frontend",
-  "title": "前端技术日报：React、Vite 与 AI 工具链",
+  "title": "前端技术日报：2026-05-12 技术早报",
   "date": "2026-05-12",
   "category": "frontend",
-  "summary": "今日前端关注点集中在 React 渲染边界、Vite 构建体验，以及 AI 辅助组件生成和测试生成的落地效率。",
-  "tags": ["React", "Vite", "AI 编程", "工程化"],
+  "summary": "In 2026, web development trends include full-stack frameworks like Next.js, server-first performance with React Server Components, and AI-driven coding tools. Security updates for React and Next.js are critical. TypeScript continues to unify frontend and backend development.",
+  "tags": [
+    "React",
+    "Vite",
+    "Next.js",
+    "TypeScript",
+    "AI 编程",
+    "工程化"
+  ],
   "highlights": [
-    "React 项目继续强调 Server Components、缓存边界和减少无效重渲染。",
-    "Vite 仍是中小团队默认构建选择，核心优势是启动快、热更新快。",
-    "AI 工具从补全代码转向生成组件、测试和重构建议。"
+    "In 2026, web development trends include full-stack frameworks like Next.js, server-first p...",
+    "Security updates for React and Next.js are critical.",
+    "TypeScript continues to unify frontend and backend development."
   ],
   "sections": [
     {
-      "title": "React 架构取舍",
-      "content": "团队需要更清楚地区分服务端和客户端组件边界，把数据获取、缓存策略和交互状态拆清楚。"
+      "title": "The 8 trends that will define web development in 2026 - LogRocket Blog",
+      "content": "## Conclusion Building for the web in 2026 will be defined by coordination over implementation. Developers will write less boilerplate and more intent. As AI automates repetitive tasks, the React Compiler optimizes performance, and meta-frameworks abstract away infrastructure, the role of the frontend developer has fundamentally changed. ## Stop guessing about your digital experience with LogRocket #### Recent posts: #### I used Claude to debug a UI bug: What actually happened A real-world debugging session using Claude to solve a tricky Next.js UI bug, exploring how AI helps, where it struggles, and what actually fixed the issue. #### What if you could lay out UI without CSS? Meet Pretext [...] tRPC is a clear example of this pattern. By allowing frontend code to call backend functions with full type inference, it removes an entire class of problems around API contracts. There are no schemas to sync and no manual types to maintain. The client and server scale together, guided by the same type system. In 2026, the backend will be expressed as typed functions rather than long-lived services. TypeScript is a key part of what makes this possible at scale, and its role will continue to grow as frontend and backend responsibilities keep converging. ## 5. Increased adoption of the React compiler [...] Over the years, these platforms have evolved into one-stop solutions. They handle routing, data fetching, caching, rendering strategies, and API layers. With the stabilization of Server Actions and Functions, the backend for many web apps is now just a folder inside the frontend repository. The rise of generative AI has also contributed to this shift. Most generative UI builders now produce meta-framework projects by default. v0, Vercel’s own builder, is a good example; it outputs Next.js applications out of the box. While React remains dominant, its meta-frameworks keep pushing boundaries. Teams that have migrated to frameworks like Next.js or Astro report faster load times, lower infrastructure costs, and much less setup overhead. ## 3. The TanStack-ification of frontend development"
     },
     {
-      "title": "构建性能",
-      "content": "Vite 生态继续围绕快速启动、插件稳定性和生产构建优化迭代，适合日报站这类静态内容项目。"
+      "title": "Next.js & React security release (May 2026): what to know",
+      "content": "May 8, 2026 The Next.js and React teams have disclosed twelve security vulnerabilities: one in React Server Components and eleven in Next.js, all patched on May 6, 2026, plus a follow-up advisory on May 7. The issues span middleware/proxy bypass, cross-site scripting (XSS), server-side request forgery (SSRF), cache poisoning, and denial of service (DoS). No detailed proof-of-concept information has been published. Here’s what Netlify customers need to know. ## Summary [...] ### Cache poisoning GHSA-wfc6-r584-vfw7 and GHSA-vfv6-92ff-j949 affect React Server Component response caching. Netlify projects are not affected: Netlify’s CDN does not rely on the `_rsc` cache-busting query parameter (so collisions in it cannot poison cache entries), and it honors `Vary` on RSC-related request headers. `_rsc` `Vary` ## What should I do? We strongly recommend upgrading as soon as possible to patched releases: `next` `react-server-dom-` `react-server-dom-` `react-server-dom-webpack` `react-server-dom-parcel` `react-server-dom-turbopack` For Next.js 13.x and 14.x users: patches are not planned for these versions. Consider upgrading to Next.js 15.x or 16.x. [...] ## Vulnerabilities ### React (`react-server-dom-`) `react-server-dom-` This affects `react-server-dom-webpack`, `react-server-dom-parcel`, and `react-server-dom-turbopack`. The Next.js advisory GHSA-8h8q-6873-q5fj tracks the same issue downstream. `react-server-dom-webpack` `react-server-dom-parcel` `react-server-dom-turbopack` | Vulnerability | Severity | Affected versions | Fixed in | --- --- | | GHSA-rv78-f8rc-xrxh — DoS in Server Components (CVE-2026-23870) | High | 19.0.0–19.0.5, 19.1.0–19.1.6, 19.2.0–19.2.5 | 19.0.6, 19.1.7, 19.2.6 | ### Next.js All Next.js issues are patched in 15.5.18 and 16.2.6. Earlier minors of 15.x and 16.x will not be patched; affected projects must upgrade to a patched minor."
     },
     {
-      "title": "AI + 前端",
-      "content": "更有价值的方向不是单纯补全代码，而是自动生成页面草图、组件变体、测试用例和代码审查清单。"
+      "title": "Next.js by Vercel - The React Framework | Next.js by Vercel - The React Framework",
+      "content": "# The latest Next.js news March 25th, 2026 Next.js runs across platforms. 16.2 brings a stable Adapter API, shared tests, and a new model of collaboration across providers. March 18th, 2026 AI improvements shipping with Next.js 16.2: `create-next-app` March 18th, 2026 Turbopack improvements shipping with Next.js 16.2: `import()` March 18th, 2026 Next.js 16.2 is now available. Highlights include: `next dev` `AGENTS.md` `create-next-app` `next-browser` February 12th, 2026 We've spent the past year making Next.js work better with AI coding agents. From an experimental in-browser agent to MCP integration and improved logging, we learned that the key is treating agents as first-class users and giving them visibility into what Next.js is doing. January 20th, 2026 [...] January 20th, 2026 How we built Turbopack with incremental computation to scale development and builds to massive Next.js applications. December 18th, 2025 Next.js 16.1 is now available. Highlights include: `next dev` `next dev --inspect` December 11th, 2025 Two additional vulnerabilities have been identified in React Server Components: a high-severity Denial of Service (CVE-2025-55184) and a medium-severity Source Code Exposure (CVE-2025-55183). All Next.js 13.x, 14.x, 15.x and 16.x users should upgrade immediately. December 3rd, 2025 A critical vulnerability (CVSS 10.0) has been identified in the React Server Components protocol that can allow remote code execution. All Next.js 15.x and 16.x users should upgrade immediately. October 21st, 2025 [...] `next/image` October 26th, 2023 As we announced at Next.js Conf, Next.js 14 is our most focused release with: October 23rd, 2023 React Server Components (RSC) in App Router is a novel paradigm that eliminates much of the redundancy and potential risks linked with conventional methods. Given the newness, developers and subsequently security teams may find it challenging to align their existing security protocols with this model. September 19th, 2023 Next.js 13.5 improves local dev performance and reliability with: `next/image` June 22nd, 2023 For the next release (and coming months) we're focused on the following areas: May 4th, 2023 Next.js 13.4 is a foundational release, marking stability for the App Router: April 6th, 2023"
     }
   ],
   "sourceLinks": [
     {
-      "label": "Vite 官网",
-      "url": "https://vite.dev/"
+      "label": "The 8 trends that will define web development in 2026 - LogRocket Blog",
+      "url": "https://blog.logrocket.com/8-trends-web-dev-2026/"
     },
     {
-      "label": "React 官网",
-      "url": "https://react.dev/"
+      "label": "Next.js & React security release (May 2026): what to know",
+      "url": "https://www.netlify.com/changelog/2026-05-08-react-nextjs-security-vulnerabilities/"
+    },
+    {
+      "label": "Next.js by Vercel - The React Framework | Next.js by Vercel - The React Framework",
+      "url": "https://nextjs.org/blog"
+    },
+    {
+      "label": "Next.js May 2026 security release - Vercel",
+      "url": "https://vercel.com/changelog/next-js-may-2026-security-release"
+    },
+    {
+      "label": "12 Defining Web Development Trends for 2026 | Figma",
+      "url": "https://www.figma.com/resource-library/web-development-trends/"
     }
   ]
 }

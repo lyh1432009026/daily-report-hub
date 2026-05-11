@@ -1,49 +1,120 @@
 {
-  "generatedAt": "2026-05-11T17:08:28.057Z",
-  "total": 3,
+  "generatedAt": "2026-05-11T17:41:00.769Z",
+  "total": 4,
   "reports": [
     {
       "id": "2026-05-12-frontend",
-      "title": "前端技术日报：React、Vite 与 AI 工具链",
+      "title": "前端技术日报：2026-05-12 技术早报",
       "date": "2026-05-12",
       "category": "frontend",
-      "summary": "今日前端关注点集中在 React 渲染边界、Vite 构建体验，以及 AI 辅助组件生成和测试生成的落地效率。",
+      "summary": "In 2026, web development trends include full-stack frameworks like Next.js, server-first performance with React Server Components, and AI-driven coding tools. Security updates for React and Next.js are critical. TypeScript continues to unify frontend and backend development.",
       "tags": [
         "React",
         "Vite",
+        "Next.js",
+        "TypeScript",
         "AI 编程",
         "工程化"
       ],
       "highlights": [
-        "React 项目继续强调 Server Components、缓存边界和减少无效重渲染。",
-        "Vite 仍是中小团队默认构建选择，核心优势是启动快、热更新快。",
-        "AI 工具从补全代码转向生成组件、测试和重构建议。"
+        "In 2026, web development trends include full-stack frameworks like Next.js, server-first p...",
+        "Security updates for React and Next.js are critical.",
+        "TypeScript continues to unify frontend and backend development."
       ],
       "sections": [
         {
-          "title": "React 架构取舍",
-          "content": "团队需要更清楚地区分服务端和客户端组件边界，把数据获取、缓存策略和交互状态拆清楚。"
+          "title": "The 8 trends that will define web development in 2026 - LogRocket Blog",
+          "content": "## Conclusion Building for the web in 2026 will be defined by coordination over implementation. Developers will write less boilerplate and more intent. As AI automates repetitive tasks, the React Compiler optimizes performance, and meta-frameworks abstract away infrastructure, the role of the frontend developer has fundamentally changed. ## Stop guessing about your digital experience with LogRocket #### Recent posts: #### I used Claude to debug a UI bug: What actually happened A real-world debugging session using Claude to solve a tricky Next.js UI bug, exploring how AI helps, where it struggles, and what actually fixed the issue. #### What if you could lay out UI without CSS? Meet Pretext [...] tRPC is a clear example of this pattern. By allowing frontend code to call backend functions with full type inference, it removes an entire class of problems around API contracts. There are no schemas to sync and no manual types to maintain. The client and server scale together, guided by the same type system. In 2026, the backend will be expressed as typed functions rather than long-lived services. TypeScript is a key part of what makes this possible at scale, and its role will continue to grow as frontend and backend responsibilities keep converging. ## 5. Increased adoption of the React compiler [...] Over the years, these platforms have evolved into one-stop solutions. They handle routing, data fetching, caching, rendering strategies, and API layers. With the stabilization of Server Actions and Functions, the backend for many web apps is now just a folder inside the frontend repository. The rise of generative AI has also contributed to this shift. Most generative UI builders now produce meta-framework projects by default. v0, Vercel’s own builder, is a good example; it outputs Next.js applications out of the box. While React remains dominant, its meta-frameworks keep pushing boundaries. Teams that have migrated to frameworks like Next.js or Astro report faster load times, lower infrastructure costs, and much less setup overhead. ## 3. The TanStack-ification of frontend development"
         },
         {
-          "title": "构建性能",
-          "content": "Vite 生态继续围绕快速启动、插件稳定性和生产构建优化迭代，适合日报站这类静态内容项目。"
+          "title": "Next.js & React security release (May 2026): what to know",
+          "content": "May 8, 2026 The Next.js and React teams have disclosed twelve security vulnerabilities: one in React Server Components and eleven in Next.js, all patched on May 6, 2026, plus a follow-up advisory on May 7. The issues span middleware/proxy bypass, cross-site scripting (XSS), server-side request forgery (SSRF), cache poisoning, and denial of service (DoS). No detailed proof-of-concept information has been published. Here’s what Netlify customers need to know. ## Summary [...] ### Cache poisoning GHSA-wfc6-r584-vfw7 and GHSA-vfv6-92ff-j949 affect React Server Component response caching. Netlify projects are not affected: Netlify’s CDN does not rely on the `_rsc` cache-busting query parameter (so collisions in it cannot poison cache entries), and it honors `Vary` on RSC-related request headers. `_rsc` `Vary` ## What should I do? We strongly recommend upgrading as soon as possible to patched releases: `next` `react-server-dom-` `react-server-dom-` `react-server-dom-webpack` `react-server-dom-parcel` `react-server-dom-turbopack` For Next.js 13.x and 14.x users: patches are not planned for these versions. Consider upgrading to Next.js 15.x or 16.x. [...] ## Vulnerabilities ### React (`react-server-dom-`) `react-server-dom-` This affects `react-server-dom-webpack`, `react-server-dom-parcel`, and `react-server-dom-turbopack`. The Next.js advisory GHSA-8h8q-6873-q5fj tracks the same issue downstream. `react-server-dom-webpack` `react-server-dom-parcel` `react-server-dom-turbopack` | Vulnerability | Severity | Affected versions | Fixed in | --- --- | | GHSA-rv78-f8rc-xrxh — DoS in Server Components (CVE-2026-23870) | High | 19.0.0–19.0.5, 19.1.0–19.1.6, 19.2.0–19.2.5 | 19.0.6, 19.1.7, 19.2.6 | ### Next.js All Next.js issues are patched in 15.5.18 and 16.2.6. Earlier minors of 15.x and 16.x will not be patched; affected projects must upgrade to a patched minor."
         },
         {
-          "title": "AI + 前端",
-          "content": "更有价值的方向不是单纯补全代码，而是自动生成页面草图、组件变体、测试用例和代码审查清单。"
+          "title": "Next.js by Vercel - The React Framework | Next.js by Vercel - The React Framework",
+          "content": "# The latest Next.js news March 25th, 2026 Next.js runs across platforms. 16.2 brings a stable Adapter API, shared tests, and a new model of collaboration across providers. March 18th, 2026 AI improvements shipping with Next.js 16.2: `create-next-app` March 18th, 2026 Turbopack improvements shipping with Next.js 16.2: `import()` March 18th, 2026 Next.js 16.2 is now available. Highlights include: `next dev` `AGENTS.md` `create-next-app` `next-browser` February 12th, 2026 We've spent the past year making Next.js work better with AI coding agents. From an experimental in-browser agent to MCP integration and improved logging, we learned that the key is treating agents as first-class users and giving them visibility into what Next.js is doing. January 20th, 2026 [...] January 20th, 2026 How we built Turbopack with incremental computation to scale development and builds to massive Next.js applications. December 18th, 2025 Next.js 16.1 is now available. Highlights include: `next dev` `next dev --inspect` December 11th, 2025 Two additional vulnerabilities have been identified in React Server Components: a high-severity Denial of Service (CVE-2025-55184) and a medium-severity Source Code Exposure (CVE-2025-55183). All Next.js 13.x, 14.x, 15.x and 16.x users should upgrade immediately. December 3rd, 2025 A critical vulnerability (CVSS 10.0) has been identified in the React Server Components protocol that can allow remote code execution. All Next.js 15.x and 16.x users should upgrade immediately. October 21st, 2025 [...] `next/image` October 26th, 2023 As we announced at Next.js Conf, Next.js 14 is our most focused release with: October 23rd, 2023 React Server Components (RSC) in App Router is a novel paradigm that eliminates much of the redundancy and potential risks linked with conventional methods. Given the newness, developers and subsequently security teams may find it challenging to align their existing security protocols with this model. September 19th, 2023 Next.js 13.5 improves local dev performance and reliability with: `next/image` June 22nd, 2023 For the next release (and coming months) we're focused on the following areas: May 4th, 2023 Next.js 13.4 is a foundational release, marking stability for the App Router: April 6th, 2023"
         }
       ],
       "sourceLinks": [
         {
-          "label": "Vite 官网",
-          "url": "https://vite.dev/"
+          "label": "The 8 trends that will define web development in 2026 - LogRocket Blog",
+          "url": "https://blog.logrocket.com/8-trends-web-dev-2026/"
         },
         {
-          "label": "React 官网",
-          "url": "https://react.dev/"
+          "label": "Next.js & React security release (May 2026): what to know",
+          "url": "https://www.netlify.com/changelog/2026-05-08-react-nextjs-security-vulnerabilities/"
+        },
+        {
+          "label": "Next.js by Vercel - The React Framework | Next.js by Vercel - The React Framework",
+          "url": "https://nextjs.org/blog"
+        },
+        {
+          "label": "Next.js May 2026 security release - Vercel",
+          "url": "https://vercel.com/changelog/next-js-may-2026-security-release"
+        },
+        {
+          "label": "12 Defining Web Development Trends for 2026 | Figma",
+          "url": "https://www.figma.com/resource-library/web-development-trends/"
         }
       ],
       "sourceFile": "data/reports/2026-05-12-frontend.json"
+    },
+    {
+      "id": "2026-05-12-finance",
+      "title": "金融日报：2026-05-12 市场早报",
+      "date": "2026-05-12",
+      "category": "finance",
+      "summary": "On May 11, 2026, A-shares surged with the semiconductor ETF leading gains, while gold ETFs saw significant declines. The market favored debt ETFs due to low fees and high liquidity. Gold prices reached $5,000 per ounce, boosting gold ETF performance.",
+      "tags": [
+        "A股",
+        "港股",
+        "美股",
+        "ETF",
+        "基金",
+        "宏观"
+      ],
+      "highlights": [
+        "On May 11, 2026, A-shares surged with the semiconductor ETF leading gains, while gold ETFs...",
+        "The market favored debt ETFs due to low fees and high liquidity.",
+        "Gold prices reached $5,000 per ounce, boosting gold ETF performance."
+      ],
+      "sections": [
+        {
+          "title": "ETF市场日报 | 中韩半导体ETF涨停10%，黄金股ETF集体回调|沪深|中证|etf|港股通|创业板|易方达基金|资金流入方面_网易订阅",
+          "content": "明日上市：粮食ETF华夏(159030)将于2026年5月12日挂牌，上市份额41,396.82万份，跟踪国证粮食产业指数(399365)，选取沪深两市中涉及粮食种植、加工、贸易及仓储的上市公司，采用自由流通市值加权编制，反映粮食产业整体表现。科创创业ETF富国(588480)将于5月12日上市，份额38,371.70万份，跟踪中证科创创业人工智能指数(931427)，选取科创板与创业板中人工智能相关上市公司，涵盖AI基础设施、技术及应用端，采用自由流通市值加权，反映双创板块人工智能产业整体表现。 以上内容与数据，与有连云立场无关，不构成投资建议。据此操作，风险自担。 特别声明：以上内容(如有图片或视频亦包括在内)为自媒体平台“网易号”用户上传并发布，本平台仅提供信息存储服务。 Notice: The content above (including the pictures and videos if any) is uploaded and posted by a user of NetEase Hao, which is a social media platform and only provides information storage services. ### ### 全球可追踪锡库存降至万吨级极低位！有色金属ETF天弘（159157）净申购近7000万份同标的第一，已连续56日实现净流入 每日经济新闻 2026-05-11 14:48:07 ### 全球芯片LOF溢价率47%惊呆市场！是机会还是暗藏风险？ 财联社 2026-05-11 21:40:07 ### 沪指突破4200点创近十年新高！证券ETF天弘（159841）标的指数午后拉升涨近2%，申购近2000万份深市同标的第一 [...] 活跃度方面，短融ETF成交超536亿稳居榜首，港股通汽车ETF换手率超184% 短融ETF海富通(511360)单日成交536.80亿元稳居榜首，银华日利ETF(511880)成交166.21亿元，国债ETF华夏(511100)成交152.79亿元，科创债ETF华夏(551550)成交150.38亿元，科创债ETF国泰(551800)成交132.19亿元，华宝添益ETF(511990)成交125.45亿元，科创债ETF富国(159200)成交114.55亿元，公司债ETF易方达(511110)成交112.68亿元，沪深300ETF华泰柏瑞(510300)成交104.57亿元，科创债ETF南方(159700)成交103.42亿元。 换手率维度，港股通汽车ETF华夏(159323)换手率184.67%居首，港股通信息技术ETF易方达(159196)换手率156.08%，国债ETF华夏(511100)换手率138.68%，国债ETF平安(511020)换手率119.73%，港股通信息技术ETF华宝(159131)换手率115.19%，港股通信息技术ETF华夏(526000)换手率113.01%，科创债ETF国泰(551800)换手率111.81%，跨境与债券品种交投活跃。 ETF发行市场方面，稀有金属ETF明日开募，粮食与科创创业人工智能ETF挂牌上市 明日募集：稀有金属ETF富国(159055)将于2026年5月12日至5月25日公开发售，跟踪中证稀有金属主题指数(930632)，选取沪深两市中涉及稀有金属开采、加工及应用的上市公司，涵盖锂、钴、稀土等细分领域，采用自由流通市值加权编制，反映稀有金属产业整体表现。 [...] ### 新闻 ### 体育 ### 娱乐 ### 财经 ### 汽车 ### 科技 ### 时尚 ### 手机 / 数码 ### 房产 / 家居 ### 教育 # ETF市场日报 | 中韩半导体ETF涨停10%，黄金股ETF集体回调 用微信扫码二维码 分享至好友和朋友圈 2026年5月11日，Wind数据显示，A股三大指数今日集体走强，沪指突破4200点，创近11年新高。截止收盘，沪指涨1.08%；深证成指涨2.16%；创业板指涨3.50%。沪深京三市成交额达到35657亿。 涨幅方面，中韩半导体ETF涨停10%领涨，芯片板块批量涨超6.9% 中韩半导体ETF华泰柏瑞(513310)单日大涨10.00%涨停领跑市场，半导体设备ETF万家(159327)涨7.20%，科创芯片设计ETF国泰(589260)涨7.06%，科创芯片设计ETF鹏华(589170)涨7.05%，科创芯片设计ETF天弘(589070)涨7.03%，半导体设备ETF华夏(562590)涨7.01%，芯片ETF天弘(159310)涨6.98%，科创芯片设计ETF浦银(589250)涨6.92%，半导体设备ETF广发(560780)涨6.92%，科创芯片设计ETF易方达(589030)涨6.92%，半导体产业链全线爆发。 跌幅方面，黄金股ETF集体回调，互联网及影视传媒板块小幅承压 黄金股相关ETF今日跌幅居前，互联网及线上消费板块同步小幅回落，影视传媒与游戏板块承压，避险资产及泛娱乐赛道出现调整。 活跃度方面，短融ETF成交超536亿稳居榜首，港股通汽车ETF换手率超184%"
+        },
+        {
+          "title": "现货黄金站上5000美元/盎司，黄金股ETF(517520)早盘上涨超6%提供者FX168",
+          "content": "##### 相关文章 科笛-B(02487.HK)：CU-30101局部外用麻醉乳膏获国家药监局上市许可 新时空 NewTimeSpace3分钟前 丹诺医药通过港交所聆讯，聚焦幽门螺杆菌感染及植入体感染创新药 新时空 NewTimeSpace13分钟前 冲刺“港股高端数控机床第一股”！上海拓璞数控通过港交所聆讯 新时空 NewTimeSpace13分钟前 科兴制药重新递表港交所，中信建投国际独家保荐 新时空 NewTimeSpace22分钟前 华电国际电力股份(01071.HK)将于2026年7月28日派发末期息每股0.14人民币 新时空 NewTimeSpace23分钟前 ## 24小时热点 事关伊朗最终协议，特朗普一句话引爆大行情！金价亚盘暴涨逾70美元 lg... 【直击亚市】特朗普态度突然转变！中国市场大涨，美元走弱油价下滑lg... 美伊突传重磅！美媒：白宫在新的霍尔木兹行动前私下向伊朗传递了信息lg... 【黄金收评】美国宣布对伊朗“攻势结束”！特朗普重磅发声 金价攀升近34美元lg... 一页式备忘录曝光、美伊最接近达成协议！欧美期货急涨，原油债券疯狂大跌lg... ## 交易商排行 更多 监管中 Pepperstone 激石 10-15年 | 澳大利亚监管 | 塞浦路斯监管 | 英国监管 90.40 监管中 EXNESS 10-15年 | 英国监管 | 塞浦路斯监管 | 南非监管 88.97 监管中 FXTM 富拓 10-15年 |塞浦路斯监管 | 英国监管 | 毛里求斯监管 85.31 监管中 axi 15-20年 | 澳大利亚监管 | 英国监管 | 新西兰监管 84.90 监管中 [...] axi 15-20年 | 澳大利亚监管 | 英国监管 | 新西兰监管 84.90 监管中 VSTAR 塞浦路斯监管| 直通牌照(STP) 80.00 监管中 GoldenGroup高地集团 澳大利亚| 5-10年 85.87 监管中 Moneta Markets亿汇 澳大利亚| 2-5年| 零售外汇牌照 77.92 监管中 GTCFX 10-15年 | 阿联酋监管 | 毛里求斯监管 | 瓦努阿图监管 63.40 监管中 IC Markets 10-15年 | 澳大利亚监管 | 塞浦路斯监管 91.06 监管中 毛里求斯监管| 零售外汇牌照| 主标MT4| 全球展业| 74.61 [...] 规模方面，黄金股ETF最新规模达177.52亿元，创近1年新高，位居可比基金1/6。（数据来源：Wind） 份额方面，黄金股ETF最新份额达68.02亿份，创近1月新高，位居可比基金1/6。（数据来源：Wind） 从资金净流入方面来看，黄金股ETF近6天获得连续资金净流入，最高单日获得5.74亿元净流入，合计“吸金”17.87亿元，日均净流入达2.98亿元。（数据来源：Wind） 数据显示，杠杆资金持续布局中。黄金股ETF前一交易日融资净买额达1973.01万元，最新融资余额达2.16亿元。（数据来源：Wind） 截至1月23日，黄金股ETF近1年净值上涨130.11%，排名可比基金第一，指数股票型基金排名3/3478，居于前0.09%。从收益能力看，截至2026年1月23日，黄金股ETF自成立以来，最高单月回报为21.81%，最长连涨月数为4个月，最长连涨涨幅为40.27%，涨跌月数比为14/12，上涨月份平均收益率为9.41%，年盈利百分比为100.00%，月盈利概率为60.11%，历史持有2年盈利概率为100.00%。截至2026年1月23日，黄金股ETF近1年超越基准年化收益为2.55%，排名可比基金1/6。 截至2026年1月23日，黄金股ETF近1年夏普比率为2.82。 回撤方面，截至2026年1月23日，黄金股ETF今年以来最大回撤1.78%，相对基准回撤0.10%，在可比基金中回撤最小。回撤后修复天数为1天，在可比基金中回撤后修复最快。 费率方面，黄金股ETF管理费率为0.50%，托管费率为0.10%，费率在可比基金中处于较低水平。 跟踪精度方面，截至2026年1月23日，黄金股ETF今年以来跟踪误差为0.028%，在可比基金中跟踪精度最高。"
+        },
+        {
+          "title": "ETF市场日报 | 港股大金融板块强势反弹；市场资金趋向债券型ETF|etf|信用债|高股息|债券基金|资产净值_网易订阅",
+          "content": "### 刘涛参加妈祖诞辰盛典，湄洲再迎妈祖回娘家 ### 震惊足坛！马拉多纳死亡真相曝光，医护面临重刑 ### baby近照脸好僵！被质疑打针了没恢复 ## 科技要闻 ### 美国政府强力下场 苹果英特尔达成代工协议 ### 曝DeepSeek融资500亿，梁文锋或自投200亿 ### Meta疯狂拥抱AI：员工苦不堪言 ### SK海力士平均奖金600万 工服成相亲神器 ### 世纪AI诉讼持续爆猛料，OpenAI正在被高管掏空？ ## 汽车要闻 ### 轴距加长/智驾拉满 阿维塔07L定位大五座SUV ### 搭载闪充技术的C级轿车 领汇e9上市售15.08万元起 ### 对话北京现代雷宏录：IONIQ要在全球品质之上融入中国智慧 ### MG 07官图发布 更亲民的新能源轿跑来了 ### 全系智能泊车 铂智3X年款升级限时权益价9.48万起 ## 态度原创 ### [+arrTaiduYuanC[i].tag+' | '+arrTaiduYuanC[i].title+']('+arrTaiduYuanC[i].link+') ## 家居要闻 ### 菁英人居 全能豪宅 ### 流动的尺度 打破家的形式主义 ### 破茧成蝶 土味精装房爆改 ### 大胆前卫 时尚大宅 ## 艺术要闻 ### 阳光，此刻醉美 ### 山水墨兰册 ### 孙俪两幅私藏油画刷屏！ ### 深圳终究失去“中国第一高楼”，华润接手地块！ ## 旅游要闻 ### 不用远行！三月街一站式逛遍大理宝藏特产 ### 行走多彩贵州 感知活力中国 ### 不用长途奔波！北京城区随处是治愈人心的初夏花海 ### InXinjiang（117）丨俄罗斯博主：新疆的确很值得来 ### 干细胞能让人“返老还童”吗 [...] 伤得很深！男子打赏女主播近300万，想结婚时才知对方女儿都20岁了：我只顾为爱冲锋，结果她全是假话 ### 伤得很深！男子打赏女主播近300万，想结婚时才知对方女儿都20岁了：我只顾为爱冲锋，结果她全是假话 “缺算力成共识、所有实验室都忌惮字节跳动、极度敬重DeepSeek”，10天走访中国顶尖AI实验室后，美国研究者的最新观察 ### “缺算力成共识、所有实验室都忌惮字节跳动、极度敬重DeepSeek”，10天走访中国顶尖AI实验室后，美国研究者的最新观察 李小冉北京豪宅太绝了！稀缺独栋复古洋房，估值8亿满是岁月质感 ### 李小冉北京豪宅太绝了！稀缺独栋复古洋房，估值8亿满是岁月质感 里外不是人！“黄鹅粉雇佣兵”被乌克兰俘虏，爹不亲娘不收没人要 ### 里外不是人！“黄鹅粉雇佣兵”被乌克兰俘虏，爹不亲娘不收没人要 山东主场狂输28分遭横扫，邱彪的“怒斥”更像一场演给球迷看的戏 ### 山东主场狂输28分遭横扫，邱彪的“怒斥”更像一场演给球迷看的戏 她是河南省委原书记，也是中国第二位女性省委书记，享年102岁 ### 她是河南省委原书记，也是中国第二位女性省委书记，享年102岁 梦见与异性发生关系，大都因为这5种原因，别再傻傻不懂了 ### 梦见与异性发生关系，大都因为这5种原因，别再傻傻不懂了 小象超市疯狂下沉三线市场 ### 小象超市疯狂下沉三线市场 粤苏“第一省”之争进入新阶段：GDP无限接近，综合实力谁更强？ ### 粤苏“第一省”之争进入新阶段：GDP无限接近，综合实力谁更强？ 红场阅兵当天，乌准备大规模报复，莫斯科被盯上，普京只能二选一 ### 红场阅兵当天，乌准备大规模报复，莫斯科被盯上，普京只能二选一 三亚1035元皮皮虾：一顿海鲜，两条人命 ### 三亚1035元皮皮虾：一顿海鲜，两条人命 [...] 换手率方面，标普消费ETF(159529)换手率居前。标普500ETF(159612)、0-4地债ETF(159816)、十年国债ETF(511260)换手率紧随其后。 债券型ETF成交额居市场前列的核心原因在于其高流动性、低费率优势及当前市场环境的综合推动。首先，债券型ETF支持“T+0”交易和质押式回购功能，投资者可实时买卖并灵活融资，显著提升了资金使用效率。其次，相较于主动管理型债券基金，债券型ETF平均管理费仅为0.15%-0.3%，叠加部分产品主动降费至0.05%，成本优势吸引了大量机构和个人资金涌入。此外，在低利率和“资产荒”背景下，债券型ETF凭借分散化投资、透明度高及信用风险可控的特性，成为避险资金的重要配置方向，尤其在信用债ETF被纳入通用质押式回购担保品后，市场吸引力进一步强化。与此同时，交易所优化做市商制度、推动产品创新（如基准做市信用债ETF），叠加货币政策宽松预期下利率债配置需求上升，共同推高了市场活跃度，部分产品单日换手率超过100%。这些因素交织促使债券型ETF在震荡市场中成为资金配置的核心工具，推动其成交规模持续领跑。 ETF发行市场方面，下周一暂无最新动态 以上内容与数据，与有连云立场无关，不构成投资建议。据此操作，风险自担。 特别声明：以上内容(如有图片或视频亦包括在内)为自媒体平台“网易号”用户上传并发布，本平台仅提供信息存储服务。 Notice: The content above (including the pictures and videos if any) is uploaded and posted by a user of NetEase Hao, which is a social media platform and only provides information storage services."
+        }
+      ],
+      "sourceLinks": [
+        {
+          "label": "ETF市场日报 | 中韩半导体ETF涨停10%，黄金股ETF集体回调|沪深|中证|etf|港股通|创业板|易方达基金|资金流入方面_网易订阅",
+          "url": "https://www.163.com/dy/article/KSLKR1UQ051987V2.html"
+        },
+        {
+          "label": "现货黄金站上5000美元/盎司，黄金股ETF(517520)早盘上涨超6%提供者FX168",
+          "url": "https://www.fx168news.com/article/%E4%BA%9A%E5%A4%AA%E8%82%A1%E5%B8%82-988725"
+        },
+        {
+          "label": "ETF市场日报 | 港股大金融板块强势反弹；市场资金趋向债券型ETF|etf|信用债|高股息|债券基金|资产净值_网易订阅",
+          "url": "https://www.163.com/dy/article/K2GNNHNG051987V2.html"
+        },
+        {
+          "label": "ETF筛选器|美股ETF|港股ETF|A股ETF|线索Clues_新浪财经_新浪网",
+          "url": "https://global.finance.sina.com.cn/clues/screener/"
+        },
+        {
+          "label": "AASTOCKS 财经新闻 - 黄金股ETF工银(159315.SZ)",
+          "url": "http://www.aastocks.com/sc/cnhk/quote/stock-news/159315/0/cn-stock-news/1"
+        }
+      ],
+      "sourceFile": "data/reports/2026-05-12-finance.json"
     },
     {
       "id": "2026-05-11-finance",
