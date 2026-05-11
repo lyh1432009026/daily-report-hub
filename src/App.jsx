@@ -201,7 +201,7 @@ export default function App() {
       try {
         setLoading(true);
         setError('');
-        const res = await fetch('/reports-index.json', { cache: 'no-store' });
+        const res = await fetch(`${import.meta.env.BASE_URL}reports-index.json`, { cache: 'no-store' });
         if (!res.ok) throw new Error(`加载失败：${res.status}`);
         const data = await res.json();
         const list = Array.isArray(data.reports) ? data.reports : Array.isArray(data) ? data : [];
