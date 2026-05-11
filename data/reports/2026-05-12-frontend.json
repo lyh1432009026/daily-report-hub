@@ -1,0 +1,37 @@
+{
+  "id": "2026-05-12-frontend",
+  "title": "前端技术日报：React、Vite 与 AI 工具链",
+  "date": "2026-05-12",
+  "category": "frontend",
+  "summary": "今日前端关注点集中在 React 渲染边界、Vite 构建体验，以及 AI 辅助组件生成和测试生成的落地效率。",
+  "tags": ["React", "Vite", "AI 编程", "工程化"],
+  "highlights": [
+    "React 项目继续强调 Server Components、缓存边界和减少无效重渲染。",
+    "Vite 仍是中小团队默认构建选择，核心优势是启动快、热更新快。",
+    "AI 工具从补全代码转向生成组件、测试和重构建议。"
+  ],
+  "sections": [
+    {
+      "title": "React 架构取舍",
+      "content": "团队需要更清楚地区分服务端和客户端组件边界，把数据获取、缓存策略和交互状态拆清楚。"
+    },
+    {
+      "title": "构建性能",
+      "content": "Vite 生态继续围绕快速启动、插件稳定性和生产构建优化迭代，适合日报站这类静态内容项目。"
+    },
+    {
+      "title": "AI + 前端",
+      "content": "更有价值的方向不是单纯补全代码，而是自动生成页面草图、组件变体、测试用例和代码审查清单。"
+    }
+  ],
+  "sourceLinks": [
+    {
+      "label": "Vite 官网",
+      "url": "https://vite.dev/"
+    },
+    {
+      "label": "React 官网",
+      "url": "https://react.dev/"
+    }
+  ]
+}

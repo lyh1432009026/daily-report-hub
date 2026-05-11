@@ -1,0 +1,127 @@
+{
+  "generatedAt": "2026-05-11T16:38:21.791Z",
+  "total": 3,
+  "reports": [
+    {
+      "id": "2026-05-12-frontend",
+      "title": "前端技术日报：React、Vite 与 AI 工具链",
+      "date": "2026-05-12",
+      "category": "frontend",
+      "summary": "今日前端关注点集中在 React 渲染边界、Vite 构建体验，以及 AI 辅助组件生成和测试生成的落地效率。",
+      "tags": [
+        "React",
+        "Vite",
+        "AI 编程",
+        "工程化"
+      ],
+      "highlights": [
+        "React 项目继续强调 Server Components、缓存边界和减少无效重渲染。",
+        "Vite 仍是中小团队默认构建选择，核心优势是启动快、热更新快。",
+        "AI 工具从补全代码转向生成组件、测试和重构建议。"
+      ],
+      "sections": [
+        {
+          "title": "React 架构取舍",
+          "content": "团队需要更清楚地区分服务端和客户端组件边界，把数据获取、缓存策略和交互状态拆清楚。"
+        },
+        {
+          "title": "构建性能",
+          "content": "Vite 生态继续围绕快速启动、插件稳定性和生产构建优化迭代，适合日报站这类静态内容项目。"
+        },
+        {
+          "title": "AI + 前端",
+          "content": "更有价值的方向不是单纯补全代码，而是自动生成页面草图、组件变体、测试用例和代码审查清单。"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "label": "Vite 官网",
+          "url": "https://vite.dev/"
+        },
+        {
+          "label": "React 官网",
+          "url": "https://react.dev/"
+        }
+      ],
+      "sourceFile": "data/reports/2026-05-12-frontend.json"
+    },
+    {
+      "id": "2026-05-11-finance",
+      "title": "金融日报：科技成长风格仍活跃，波动风险同步抬升",
+      "date": "2026-05-11",
+      "category": "finance",
+      "summary": "市场仍围绕 AI、半导体、科技 ETF 与跨市场配置展开，但高弹性资产的波动和估值压力需要同步关注。",
+      "tags": [
+        "A股",
+        "港股",
+        "美股",
+        "ETF",
+        "科技股"
+      ],
+      "highlights": [
+        "A股科技主题仍是资金关注方向，但宽基 ETF 资金行为存在分歧。",
+        "港股科技、互联网、AI 链条近期表现偏强，对 A 股情绪有传导。",
+        "美股上升趋势仍主要由大型科技权重驱动，需关注收益率和地缘扰动。"
+      ],
+      "sections": [
+        {
+          "title": "A股",
+          "content": "科技、半导体、计算机、电子等方向仍有活跃度，但当前不是无脑普涨，更像主题成长活跃与资金分歧并存。"
+        },
+        {
+          "title": "港股",
+          "content": "恒生科技与 AI 产业链相关方向热度较高，资金更关注互联网、半导体、AI 应用与高股息的轮动。"
+        },
+        {
+          "title": "美股",
+          "content": "标普和纳指偏强，但上涨集中在大型科技权重，后续要看财报、通胀、利率和地缘因素。"
+        }
+      ],
+      "sourceLinks": [
+        {
+          "label": "证券时报",
+          "url": "https://www.stcn.com/"
+        },
+        {
+          "label": "东方财富",
+          "url": "https://www.eastmoney.com/"
+        }
+      ],
+      "sourceFile": "data/reports/2026-05-11-finance.json"
+    },
+    {
+      "id": "2026-05-10-frontend",
+      "title": "前端技术日报：静态站、数据索引与部署体验",
+      "date": "2026-05-10",
+      "category": "frontend",
+      "summary": "日报展示类产品适合采用静态站架构，通过 JSON 数据和构建期索引生成，实现低成本、易部署、可扩展。",
+      "tags": [
+        "静态站",
+        "部署",
+        "数据索引",
+        "Vercel"
+      ],
+      "highlights": [
+        "静态站可以把运行成本压到最低，适合个人自动化日报产品。",
+        "将每篇日报拆成独立 JSON，方便生成、校验、归档和版本管理。",
+        "构建脚本生成统一索引，前端只需要读取一个入口文件。"
+      ],
+      "sections": [
+        {
+          "title": "数据组织",
+          "content": "每篇日报以 data/reports/*.json 存储，字段稳定后可以接入自动生成任务。"
+        },
+        {
+          "title": "展示方式",
+          "content": "首页按日期倒序展示卡片，同时提供分类筛选、关键词搜索和详情面板。"
+        },
+        {
+          "title": "部署方式",
+          "content": "构建产物是 dist 静态文件，可以部署到 Vercel、Netlify、GitHub Pages 或任意 Nginx 静态服务器。"
+        }
+      ],
+      "sourceLinks": [],
+      "sourceFile": "data/reports/2026-05-10-frontend.json"
+    }
+  ]
+}
