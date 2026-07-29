@@ -1,0 +1,52 @@
+{
+  "id": "2026-07-29-frontend-frameworks",
+  "title": "前端框架日报：2026-07-29",
+  "date": "2026-07-29",
+  "category": "frontend",
+  "summary": "前端框架日报聚焦React、Vue、Next.js、Vite、TypeScript等方向。核心看点：React 官方文档、生态升级、组件模型和工程实践更新；Vue 生态、组合式 API、工具链和社区实践更新；Next.js 路由、渲染、缓存、部署和全栈开发相关更新",
+  "tags": [
+    "React",
+    "Vue",
+    "Next.js",
+    "Vite",
+    "TypeScript",
+    "前端框架"
+  ],
+  "highlights": [
+    "React 官方文档、生态升级、组件模型和工程实践更新",
+    "Vue 生态、组合式 API、工具链和社区实践更新",
+    "Next.js 路由、渲染、缓存、部署和全栈开发相关更新"
+  ],
+  "sections": [
+    {
+      "title": "生态动态",
+      "content": "React 官方文档、生态升级、组件模型和工程实践更新 对团队来说，优先关注是否影响现有技术栈、依赖升级路径和长期维护成本。"
+    },
+    {
+      "title": "工程效率",
+      "content": "Vue 生态、组合式 API、工具链和社区实践更新 可以重点评估构建速度、类型安全、测试生成、代码审查和部署链路是否有实际收益。"
+    },
+    {
+      "title": "落地建议",
+      "content": "Next.js 路由、渲染、缓存、部署和全栈开发相关更新 涉及框架大版本、安全补丁或构建链路变化时，应同步补充回滚方案和兼容性检查。"
+    },
+    {
+      "title": "团队提醒",
+      "content": "日报内容适合做早会输入：先看是否影响当前项目，再决定是否安排调研、升级或试点。"
+    }
+  ],
+  "sourceLinks": [
+    {
+      "label": "React 官方动态",
+      "url": "https://react.dev/"
+    },
+    {
+      "label": "Vue 官方动态",
+      "url": "https://vuejs.org/"
+    },
+    {
+      "label": "Next.js 官方动态",
+      "url": "https://nextjs.org/blog"
+    }
+  ]
+}
